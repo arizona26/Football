@@ -66,7 +66,7 @@ p {
 }
 
 iframe {
-    width: 80%; /* Гнучка ширина */
+    width: 80%;
     height: 500px;
     display: block;
     margin: 20px auto;
