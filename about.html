@@ -2,16 +2,81 @@
 <html lang="ua">
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="Рублевський Максим">
     <title>Про нас - Футбольний світ</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: darkblue;
+            color: white;
+        }
+        colgroup col:nth-child(1) {
+            background-color: lightgray;
+        }
+        colgroup col:nth-child(2) {
+            background-color: lightblue;
+        }
+        colgroup col:nth-child(3) {
+            background-color: lightgreen;
+        }
+    </style>
 </head>
-<body>
+<body style="background: rgb(252, 251, 251); color: rgb(254, 9, 254);">
     <h1>Про нас</h1>
     <nav>
-        <a href="index.html">Головна</a> | 
-        <a href="teams.html">Команди</a> | 
-        <a href="football_news.html">Новини</a>
+        <a href="index.html" style="color: orange;">Головна</a>
+        <a href="teams.html" style="color: blue;">Команди</a>
+        <a href="football_news.html" style="color: green;">Новини</a>
+        <a href="iframe.html" style="color: red;">Фрейм</a>
     </nav>
-    <p>Я футбольний фанати, який створили цей сайт для всіх любителів гри номер один у світі.</p>
+    <p>Я <i>футбольний фанат</i>, який створив цей сайт для всіх любителів гри номер один у світі.</p>
+    
+    <h2>Популярність футбольних клубів</h2>
+    <table>
+        <colgroup>
+            <col span="2" style="background-color: lightblue;">
+            <col style="background-color: lightgreen;">
+        </colgroup>
+        <tr>
+            <th rowspan="2">Клуб</th>
+            <th colspan="2">Деталі</th>
+        </tr>
+        <tr>
+            <th>Трофеї</th>
+            <th>Середня відвідуваність</th>
+        </tr>
+        <tr>
+            <td>Реал Мадрид</td>
+            <td>99</td>
+            <td>60,000</td>
+        </tr>
+        <tr>
+            <td>Барселона</td>
+            <td>91</td>
+            <td>58,000</td>
+        </tr>
+        <tr>
+            <td>Баварія</td>
+            <td>82</td>
+            <td>75,000</td>
+        </tr>
+        <tr>
+            <td>Манчестер Юнайтед</td>
+            <td>69</td>
+            <td>73,000</td>
+        </tr>
+    </table>
+    
+    <p>Тут ми будемо слідкувати за найпопулярнішими командами світу.</p>
+    <p><i>І обов'язково за найкращою лігою світу – УПЛ!</i></p>
 </body>
 </html>
