@@ -1,10 +1,10 @@
 body {
     font-family: 'Oswald', Arial, sans-serif;
     font-size: 20px;
-    color: #603c3c;
+    color: #7f2f2f;
     line-height: 1.6;
     text-align: justify;
-    background-color: #8c8484;
+    background-color: #a8c1b2;
     margin: 0;
     padding: 20px;
 }
@@ -31,7 +31,7 @@ a {
 }
 
 a:hover {
-    color: rgb(32, 49, 25) !important;
+    color: rgb(32, 49, 25);
 }
 
 nav a {
@@ -40,7 +40,7 @@ nav a {
 }
 
 p a {
-    color: rgb(89, 129, 70) !important;
+    color: rgb(89, 129, 70);
     text-decoration: underline;
 }
 
@@ -49,20 +49,12 @@ p {
 }
 
 .special-paragraph {
-    color: rgb(130, 128, 255);
+    color: rgb(130, 128, 255) !important;
     font-size: 20px;
     background-color: #fff3cd;
     padding: 15px;
     border-left: 5px solid darkblue;
     margin-top: 20px;
-}
-
-.alert-text {
-    color: rgb(165, 10, 10);
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    margin: 20px 0;
 }
 
 iframe {
@@ -101,7 +93,6 @@ table {
     width: 80%;
     margin: 5px auto;
     border-collapse: collapse;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     background-color: #f0f0f0;
     text-align: center;
     font-size: 16px;
@@ -126,12 +117,24 @@ table tr:hover {
     background-color: #292020;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
+/* Контекстні селектори */
+nav a {
+    font-size: 18px;
+    text-transform: uppercase;
 }
 
-nav ul li {
-    margin: 10px 0;
-    font-size: 18px;
+/* Сусідні селектори */
+h2 + p {
+    font-style: italic;
+    color: #003366;
+}
+
+/* Дочірні селектори */
+nav > a {
+    border-bottom: 2px solid transparent;
+    padding-bottom: 5px;
+}
+
+nav > a:hover {
+    border-bottom: 2px solid #5a5a5a;
 }
