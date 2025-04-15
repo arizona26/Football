@@ -16,77 +16,84 @@ h1, h2, h3 {
     text-transform: uppercase;
 }
 
+#news-title {
+    color: #b00000;
+    font-size: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #b00000;
+    padding-bottom: 10px;
+}
+
 #main-title {
     color: darkblue;
     font-size: 28px;
     text-transform: uppercase;
     text-align: center;
 }
-
-a {
-    color: #394951;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+#main-title::before {
+    content: "⚽ ";
 }
 
-a:hover {
-    color: rgb(32, 49, 25);
+#main-title::after {
+    content: " ⚽";
 }
 
 nav a {
-    color: rgb(5, 3, 120);
-    text-decoration: none;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #ff5733;
+    font-weight: bold;
+}
+
+nav > a {
+    color: green;
+    border-bottom: 4px solid #0c0c0c;
+    padding-bottom: 7px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+nav > a:hover {
+    border-color: #06fb6c;
 }
 
 p a {
-    color: rgb(89, 129, 70);
+    color: rgb(85, 253, 7);
     text-decoration: underline;
 }
 
-p {
-    margin-bottom: 15px;
+p > a {
+    color: rgb(89, 5, 245);
+    text-decoration: underline;
 }
 
-.special-paragraph {
-    color: rgb(130, 128, 255) !important;
-    font-size: 20px;
-    background-color: #fff3cd;
-    padding: 15px;
-    border-left: 5px solid darkblue;
-    margin-top: 20px;
+a:link {
+    color: blue;
+    text-decoration: none;
 }
 
-iframe {
-    width: 80%;
-    height: 500px;
-    display: block;
-    margin: 20px auto;
-    border: 3px solid #2d2f30;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+a:visited {
+    color: purple;
 }
 
-ul {
-    list-style-type: square;
-    color: rgb(128, 255, 225);
-    padding-left: 20px;
+a:hover {
+    color: green;
+    text-decoration: underline;
 }
 
-ol {
-    list-style-type: upper-roman;
-    color: rgb(12, 63, 30);
-    padding-left: 30px;
+a:active {
+    color: red;
+    background-color: yellow;
 }
 
-dl dt {
-    font-weight: bold;
-    color: #170080;
-}
-
-dl dd {
-    margin-left: 30px;
-    color: rgb(9, 83, 48);
+h2 + p {
+    font-style: italic;
+    color: #06fb6c;
+    background-color: #222;
+    padding: 10px;
+    border-left: 5px solid #06fb6c;
 }
 
 table {
@@ -117,24 +124,51 @@ table tr:hover {
     background-color: #292020;
 }
 
-/* Контекстні селектори */
-nav a {
-    font-size: 18px;
-    text-transform: uppercase;
+/* Нові елементи за завданням */
+.floating-block {
+    float: right;
+    width: 300px;
+    padding: 10px;
+    background-color: #ffeaa7;
+    border: 2px dashed #2d3436;
+    margin: 10px;
 }
 
-/* Сусідні селектори */
-h2 + p {
+.positioned-block {
+    position: relative;
+    top: 20px;
+    left: 10px;
+    background-color: #dff9fb;
+    padding: 15px;
+    border: 2px solid #130f40;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    background-color: #fab1a0;
+    font-weight: bold;
+}
+
+ol li:first-child {
+    background-color: #ffeaa7;
+    font-weight: bold;
+}
+
+.special-paragraph {
+    color: rgb(130, 128, 255) !important;
+    font-size: 20px;
+    background-color: #fff3cd;
+    padding: 15px;
+    border-left: 5px solid darkblue;
+    margin-top: 20px;
+}
+
+.special-paragraph::before {
+    content: "📣 ";
+    font-weight: bold;
+}
+
+.special-paragraph::after {
+    content: " Дякуємо, що читаєте!";
     font-style: italic;
-    color: #003366;
-}
-
-/* Дочірні селектори */
-nav > a {
-    border-bottom: 2px solid transparent;
-    padding-bottom: 5px;
-}
-
-nav > a:hover {
-    border-bottom: 2px solid #5a5a5a;
 }

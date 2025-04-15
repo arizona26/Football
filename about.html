@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="ua">
-    <head>
-        <meta charset="UTF-8">
-        <title>Про нас - Футбольний світ</title>
-        <link rel="stylesheet" href="style.css">
-        <style>
-            a {
-                font-size: 18px;
-                color: rgb(239, 12, 12);
-            }
-        </style>
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <title>Про нас - Футбольний світ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-        <h1>Про нас</h1>
+    <h1 id="main-title">Про нас</h1>
 
-        <nav>
-            <a href="index.html">Головна</a>
-            <a href="teams.html">Команди</a>
-            <a href="football_news.html">Новини</a>
-        </nav>
-        <a href="#teams-table">Перейти до таблиці популярності команд</a>
+    <nav>
+        <a href="index.html">Головна</a>
+        <a href="teams.html">Команди</a>
+        <a href="football_news.html">Новини</a>
+    </nav>
 
-        <p class="special-paragraph">Я <i>футбольний фанат</i>, який створив цей сайт для всіх любителів гри номер один у світі.</p>
-        
+
+    <div class="positioned-block">
+        <span class="highlight">Наша місія — популяризувати футбол та зробити його ближчим до кожного вболівальника.</span>
+    </div>
+
+    <p class="special-paragraph">Я <i>футбольний фанат</i>, який створив цей сайт для всіх любителів гри номер один у світі.</p>
+    <a href="#teams-table">Перейти до таблиці популярності команд</a>
+
     <h2 id="teams-table">Популярність футбольних клубів</h2>
+    <p>Ця сторінка присвячена найпопулярнішим футбольним клубам світу. Тут ви знайдете інформацію про їхні досягнення, історію та багато іншого.</p>
+    <p>Також <span><a href="#teams-table">посилання на таблицю</a></span> для використання контекстного селектору.</p>
+    <div class="floating-block">Якщо вас цікавить наш контент,можете порекомендувати його своїм друзям</div>
+
     <table>
         <thead>
             <tr>
-                <th rowspan="2" style>Клуб</th>
-                <th colspan="2" style>Деталі</th>
+                <th rowspan="2">Клуб</th>
+                <th colspan="2">Деталі</th>
             </tr>
             <tr>
-                <th style>Трофеї</th>
-                <th style>Середня відвідуваність</th>
+                <th>Трофеї</th>
+                <th>Середня відвідуваність</th>
             </tr>
         </thead>
         <tbody>
@@ -59,8 +62,9 @@
             </tr>
         </tbody>
     </table>
-    
+
     <p>Тут ми будемо слідкувати за найпопулярнішими командами світу.</p>
     <p><i>І обов'язково за найкращою лігою світу – УПЛ!</i></p>
+
 </body>
 </html>
