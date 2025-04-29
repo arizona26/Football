@@ -31,8 +31,10 @@ function developerInfo(surname, name, position = "Студент") {
     alert(`Розробник сайту: ${surname} ${name}, Посада: ${position}`);
 }
 
-// Функція порівняння рядків
-function compareStrings(str1, str2) {
+function compareStringsFromUser() {
+    let str1 = prompt("Введіть перший рядок:");
+    let str2 = prompt("Введіть другий рядок:");
+
     if (str1.length > str2.length) {
         alert(`Більший рядок: ${str1}`);
     } else if (str2.length > str1.length) {
@@ -42,16 +44,18 @@ function compareStrings(str1, str2) {
     }
 }
 
+// Виклик функції
+compareStringsFromUser();
+
 // Виклик функцій
 userDialog();
 developerInfo("Рублевський", "Максим");
-compareStrings("Футбол", "Баскетбол");
 
-// Зміна фону сторінки на 30 секунд
+// Зміна фону сторінки на 60 секунд
 document.body.style.backgroundColor = "#ffeaa7";
 setTimeout(() => {
     document.body.style.backgroundColor = "#a8c1b2";
-}, 30000);
+}, 60000);
 
 // Робота з DOM
 
@@ -72,32 +76,57 @@ console.log(mainTitle.outerHTML);
 const spanElement = document.querySelector(".highlight");
 console.log(spanElement.firstChild.nodeValue);
 
-// document.write приклад
-document.write("<p>Сторінка була відкрита успішно! ✅</p>");
+// Створюємо і вставляємо блок на початок сторінки
+const startBlock = document.createElement("div");
+startBlock.textContent = "🚀 Це блок на початку сторінки";
+startBlock.style.background = "#ffeaa7";
+startBlock.style.padding = "10px";
+startBlock.style.margin = "10px 0";
+startBlock.style.fontWeight = "bold";
+document.body.prepend(startBlock);
 
-// Створення нового елемента
-const newBlock = document.createElement("div");
-newBlock.className = "new-block"; // Додаємо клас для стилізації
-const newText = document.createTextNode("Новий важливий блок новин ⚡");
-newBlock.appendChild(newText);
+// Додаємо текст після блоку
+const infoText = document.createElement("p");
+infoText.textContent = "⚠️ Це повідомлення після початкового блоку";
+document.body.insertBefore(infoText, startBlock.nextSibling);
 
-// Вставка елемента в кінець сторінки
-document.body.append(newBlock);
+// Створюємо параграф, який потім замінимо
+const paragraph = document.createElement("p");
+paragraph.textContent = "Цей параграф буде замінено 🔁";
+paragraph.className = "special-paragraph";
+document.body.insertBefore(paragraph, infoText.nextSibling); 
 
-// Вставка нового елемента на початок body через prepend
-const prependBlock = document.createElement("div");
-prependBlock.textContent = "Важлива інформація на початку сторінки! 🚀";
-prependBlock.style.backgroundColor = "#74b9ff";
-prependBlock.style.padding = "15px";
-prependBlock.style.marginBottom = "20px";
-prependBlock.style.textAlign = "center";
-document.body.prepend(prependBlock);
+// Створюємо блок для заміни
+const replacementBlock = document.createElement("div");
+replacementBlock.textContent = "🔄 Цей блок замінив параграф!";
+replacementBlock.style.background = "#fab1a0";
+replacementBlock.style.padding = "10px";
+replacementBlock.style.margin = "10px 0";
+replacementBlock.style.fontWeight = "bold";
 
-// Заміна існуючого параграфа через replaceWith
-const specialParagraph = document.querySelector(".special-paragraph");
-specialParagraph.replaceWith(newBlock);
-
-// Видалення нового блоку через 5 секунд
+// Замінюємо через 2 секунди
 setTimeout(() => {
-    newBlock.remove();
-}, 5000);
+    const targetParagraph = document.querySelector(".special-paragraph");
+    if (targetParagraph) {
+        targetParagraph.replaceWith(replacementBlock);
+    }
+}, 2000);
+
+// Створюємо блок, який потім буде видалено
+const endBlock = document.createElement("div");
+endBlock.textContent = "📦 Цей блок буде видалено через 10 секунд";
+endBlock.style.background = "#dfe6e9";
+endBlock.style.padding = "10px";
+endBlock.style.margin = "10px 0";
+endBlock.style.fontWeight = "bold";
+document.body.append(endBlock);
+
+// Видалення блоку через 10 секунд
+setTimeout(() => {
+    endBlock.remove();
+    const deletedNote = document.createElement("div");
+    deletedNote.textContent = "📭 Блок був видалений!";
+    deletedNote.style.color = "red";
+    deletedNote.style.fontWeight = "bold";
+    document.body.append(deletedNote);
+}, 10000);
