@@ -33,6 +33,7 @@ h1, h2, h3 {
     text-transform: uppercase;
     text-align: center;
 }
+/*псевдоелементи*/
 #main-title::before {
     content: "⚽ ";
 }
@@ -68,7 +69,7 @@ p > a {
     color: rgb(89, 5, 245);
     text-decoration: underline;
 }
-
+/*псевдокласи для посилань*/
 a:link {
     color: blue;
     text-decoration: none;
@@ -148,7 +149,7 @@ table tr:hover {
     background-color: #fab1a0;
     font-weight: bold;
 }
-
+/*псевдоклас*/
 ol li:first-child {
     background-color: #ffeaa7;
     font-weight: bold;
@@ -162,7 +163,7 @@ ol li:first-child {
     border-left: 5px solid darkblue;
     margin-top: 20px;
 }
-
+/*псевдоелементи*/
 .special-paragraph::before {
     content: "📣 ";
     font-weight: bold;
@@ -171,4 +172,13 @@ ol li:first-child {
 .special-paragraph::after {
     content: " Дякуємо, що читаєте!";
     font-style: italic;
+}
+
+.new-block {
+    background-color: #fdcb6e;
+    padding: 15px;
+    margin: 20px 0;
+    border: 2px solid #d35400;
+    text-align: center;
+    font-size: 18px;
 }
