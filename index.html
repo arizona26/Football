@@ -4,12 +4,38 @@
     <meta charset="UTF-8">
     <meta name="author" content="Рублевський Максим">
     <title>Футбольний світ</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">  
+    <script src="script.js"></script>
 </head>
 <body>
 
-    <h1 id="main-title">Ласкаво просимо на футбольний сайт!</h1>
+    <h1 id="main-title" onmouseover="handleMouseOverTitle()">Ласкаво просимо на футбольний сайт!</h1>
 
+    <!-- Кнопка для події через властивість -->
+    <button id="fact">Показати ціквий футбольний факт</button>
+
+    <!-- Кнопка для обробки події -->
+    <button id="football-btn">Для любителей футболу</button>
+
+    <!-- Список клубів -->
+    <ul id="club-list">
+        <li>Реал Мадрид</li>
+        <li>Барселона</li>
+        <li>Манчестер Юнайтед</li>
+    </ul>
+
+    <!-- Меню з кнопками -->
+    <div id="menu">
+        <button data-action="like">Like</button>
+        <button data-action="share">Share</button>
+        <button data-action="info">Info</button>
+    </div>
+
+    <div id="output"></div>
+
+    <!-- Лог для запису -->
+    <div id="log"></div>
+  
     <nav>
         <a href="about.html">Про нас</a>
         <a href="teams.html">Команди</a>
@@ -24,21 +50,9 @@
     <p>Тут ви знайдете інформацію про найпопулярніші футбольні клуби світу, їх досягнення та історію.</p>
     <p class="special-paragraph">Останні новини зі світу футболу, аналіз матчів та статистика.</p>
 
-    <!-- Список для підсвічування -->
-    <ul id="football-list">
-        <li>Барселона</li>
-        <li>Реал Мадрид</li>
-        <li>Ліверпуль</li>
-        <li>Манчестер Сіті</li>
-    </ul>
+      <h2>Популярні футбольні клуби</h2>
 
-    <!-- Меню з кнопками -->
-    <div id="menu">
-        <button data-action="showInfo">Інформація про сайт</button>
-        <button data-action="compare">Порівняти рядки</button>
-        <button data-action="developer">Розробник</button>
-    </div>
+<img src="https://www.volynnews.com/resize/450x298/r/files/news/2018/02-09/238098/434.jpg" alt="Футбол" width="200">
 
-    <script src="script.js"></script>
 </body>
 </html>

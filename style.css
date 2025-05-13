@@ -182,3 +182,7 @@ ol li:first-child {
     text-align: center;
     font-size: 18px;
 }
+li.active {
+  background-color: yellow;
+  font-weight: bold;
+}
