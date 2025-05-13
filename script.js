@@ -114,7 +114,6 @@
 // startBlock.after(afterBlock);
 
 // Обробник події через атрибут
-//  Функція для обробки події через атрибут
 function handleMouseOverTitle() {
     alert("Факт: Найбільше титулів Ліги чемпіонів має 'Реал Мадрид' — 14!");
 }
@@ -210,4 +209,39 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
     }
+});
+
+class BehaviorController {
+    constructor(rootElementId) {
+        this.root = document.getElementById(rootElementId);
+        if (this.root) {
+            this.root.addEventListener("click", this.handleClick.bind(this));
+        }
+    }
+
+    handleClick(event) {
+        const target = event.target;
+        const behavior = target.dataset.behavior;
+        if (!behavior) return;
+
+        switch (behavior) {
+            case "showAlert":
+                alert("Вітаємо Вас на футбольному сайті ");
+                break;
+            case "highlightCompany":
+                const desc = document.getElementById("description");
+                if (desc) {
+                    desc.style.backgroundColor = "#ed5d15";
+                    desc.style.color = "white";
+                }
+                break;
+            default:
+                console.warn("Невідома поведінка:", behavior);
+        }
+    }
+}
+
+// Ініціалізація після завантаження сторінки
+window.addEventListener("DOMContentLoaded", () => {
+    new BehaviorController("behavior-menu");
 });

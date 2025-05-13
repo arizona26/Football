@@ -186,3 +186,11 @@ li.active {
   background-color: yellow;
   font-weight: bold;
 }
+#log {
+    margin-top: 20px;
+    padding: 10px;
+    border: 2px solid green;
+    font-size: 20px;
+    background-color: #f0fff0;
+    color: darkgreen;
+}
