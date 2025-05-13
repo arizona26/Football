@@ -16,7 +16,6 @@
         <a href="football_news.html">Новини</a>
     </nav>
 
-    <!-- ДОДАНО: позиціонований блок з блочним і рядковим елементом -->
     <div class="positioned-block">
         <span class="highlight">Наш сайт був оновлений! Тепер ще більше контенту про футбол.</span>
     </div>
@@ -25,11 +24,20 @@
     <p>Тут ви знайдете інформацію про найпопулярніші футбольні клуби світу, їх досягнення та історію.</p>
     <p class="special-paragraph">Останні новини зі світу футболу, аналіз матчів та статистика.</p>
 
-    <p>Футбольне поле</p>
-    <a href="https://cc.1927.kiev.ua/c4/x_1f3daba1.jpg" target="_blank">
-        <img src="https://cc.1927.kiev.ua/c4/x_1f3daba1.jpg" width="300" alt="Футбольне поле">
-    </a>
-    <img src="https://pohcdn.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/Stamford-Bridge-Stadium.jpg" width="400" height="250" alt="Стадіон Стемфорд Брідж">
+    <!-- Список для підсвічування -->
+    <ul id="football-list">
+        <li>Барселона</li>
+        <li>Реал Мадрид</li>
+        <li>Ліверпуль</li>
+        <li>Манчестер Сіті</li>
+    </ul>
+
+    <!-- Меню з кнопками -->
+    <div id="menu">
+        <button data-action="showInfo">Інформація про сайт</button>
+        <button data-action="compare">Порівняти рядки</button>
+        <button data-action="developer">Розробник</button>
+    </div>
 
     <script src="script.js"></script>
 </body>

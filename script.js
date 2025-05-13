@@ -5,106 +5,87 @@ alert("Ласкаво просимо на сайт Футбольний світ
 let name = prompt("Як вас звати?");
 
 // Підтвердження продовження
-let agree = confirm(`Привіт, ${name}! Хочете переглянути наш сайт?`);
+let agree = confirm(`Привіт, ${name}! Хочете перейти до футбольного контенту?`);
 if (!agree) {
-    alert("Шкода. До зустрічі!");
-    location.href = "https://www.google.com"; // Перенаправлення
+    alert("Шкода. Можливо іншим разом. До зустрічі!");
+    location.href = "https://www.google.com";
 }
 
-// Функція діалогу з користувачем
+// Футбольна вікторина
 function userDialog() {
     let attempt = 0;
     while (attempt < 3) {
-        let answer = prompt("Яка найпопулярніша гра у світі?");
+        let answer = prompt("Який вид спорту найпопулярніший у світі?");
         if (answer.toLowerCase() === "футбол") {
-            alert("Правильно!");
+            alert("Так, це дійсно футбол!");
             break;
         } else {
-            alert("Невірно! Спробуйте ще раз.");
+            alert("Неправильно! Подумайте ще.");
             attempt++;
         }
     }
 }
 
-// Функція інформації про розробника
-function developerInfo(surname, name, position = "Студент") {
+// Інформація про розробника сайту
+function developerInfo(surname, name, position = "Футбольний фанат") {
     alert(`Розробник сайту: ${surname} ${name}, Посада: ${position}`);
 }
 
+// Порівняння назв футбольних клубів
 function compareStringsFromUser() {
-    let str1 = prompt("Введіть перший рядок:");
-    let str2 = prompt("Введіть другий рядок:");
+    let str1 = prompt("Введіть назву першого футбольного клубу:");
+    let str2 = prompt("Введіть назву другого футбольного клубу:");
 
     if (str1.length > str2.length) {
-        alert(`Більший рядок: ${str1}`);
+        alert(`Назва клубу з більшою довжиною: ${str1}`);
     } else if (str2.length > str1.length) {
-        alert(`Більший рядок: ${str2}`);
+        alert(`Назва клубу з більшою довжиною: ${str2}`);
     } else {
-        alert("Рядки однакові за довжиною.");
+        alert("Назви однакові за довжиною.");
     }
 }
 
-// Виклик функції
 compareStringsFromUser();
-
-// Виклик функцій
 userDialog();
 developerInfo("Рублевський", "Максим");
 
-// Зміна фону сторінки на 60 секунд
-document.body.style.backgroundColor = "#ffeaa7";
+// Зміна фону сайту
+document.body.style.backgroundColor = "#c8e6c9"; // світло-зелений, як футбольне поле
 setTimeout(() => {
-    document.body.style.backgroundColor = "#a8c1b2";
+    document.body.style.backgroundColor = "#81c784";
 }, 60000);
 
-// Робота з DOM
-
-// getElementById і innerHTML
+// DOM-маніпуляції
 const mainTitle = document.getElementById("main-title");
 mainTitle.innerHTML = "Футбольний світ оновлено!";
 
-// querySelectorAll і textContent
 const links = document.querySelectorAll("nav a");
-links.forEach(link => {
-    console.log(link.textContent);
-});
+links.forEach(link => console.log("Посилання на:", link.textContent));
 
-// outerHTML приклад
 console.log(mainTitle.outerHTML);
 
-// nodeValue / data приклад
 const spanElement = document.querySelector(".highlight");
 console.log(spanElement.firstChild.nodeValue);
 
-// Створюємо і вставляємо блок на початок сторінки
+document.write("<h1>⚽ Оновлення футбольної сторінки</h1>");
+
 const startBlock = document.createElement("div");
-startBlock.textContent = "🚀 Це блок на початку сторінки";
-startBlock.style.background = "#ffeaa7";
+startBlock.textContent = "🏟️ Вітаємо у світі великого футболу!";
+startBlock.style.background = "#e0f7fa";
 startBlock.style.padding = "10px";
 startBlock.style.margin = "10px 0";
 startBlock.style.fontWeight = "bold";
 document.body.prepend(startBlock);
 
-// Додаємо текст після блоку
-const infoText = document.createElement("p");
-infoText.textContent = "⚠️ Це повідомлення після початкового блоку";
-document.body.insertBefore(infoText, startBlock.nextSibling);
+const specialParagraph = document.createElement("p");
+document.body.append(specialParagraph);
 
-// Створюємо параграф, який потім замінимо
-const paragraph = document.createElement("p");
-paragraph.textContent = "Цей параграф буде замінено 🔁";
-paragraph.className = "special-paragraph";
-document.body.insertBefore(paragraph, infoText.nextSibling); 
-
-// Створюємо блок для заміни
 const replacementBlock = document.createElement("div");
-replacementBlock.textContent = "🔄 Цей блок замінив параграф!";
-replacementBlock.style.background = "#fab1a0";
+replacementBlock.textContent = "📢 Новини футболу: абзац оновлено!";
+replacementBlock.style.background = "#dfe6e9";
 replacementBlock.style.padding = "10px";
-replacementBlock.style.margin = "10px 0";
-replacementBlock.style.fontWeight = "bold";
+replacementBlock.style.border = "1px solid #2d3436";
 
-// Замінюємо через 2 секунди
 setTimeout(() => {
     const targetParagraph = document.querySelector(".special-paragraph");
     if (targetParagraph) {
@@ -112,21 +93,81 @@ setTimeout(() => {
     }
 }, 2000);
 
-// Створюємо блок, який потім буде видалено
 const endBlock = document.createElement("div");
-endBlock.textContent = "📦 Цей блок буде видалено через 10 секунд";
-endBlock.style.background = "#dfe6e9";
+endBlock.textContent = "⏳ Цей блок буде замінено через 10 секунд.";
+endBlock.style.background = "#ffccbc";
 endBlock.style.padding = "10px";
-endBlock.style.margin = "10px 0";
-endBlock.style.fontWeight = "bold";
+endBlock.style.marginTop = "10px";
 document.body.append(endBlock);
 
-// Видалення блоку через 10 секунд
 setTimeout(() => {
     endBlock.remove();
     const deletedNote = document.createElement("div");
-    deletedNote.textContent = "📭 Блок був видалений!";
+    deletedNote.textContent = "🗂️ Блок із новинами видалено!";
     deletedNote.style.color = "red";
     deletedNote.style.fontWeight = "bold";
     document.body.append(deletedNote);
 }, 10000);
+
+const afterBlock = document.createElement("p");
+afterBlock.textContent = "📌 Цей абзац вставлено після блоку привітання.";
+startBlock.after(afterBlock);
+
+// --- Мишачі події ---
+// 1. Атрибутний обробник
+function handleMouseAttribute() {
+    alert("Натиснуто на заголовок через атрибут!");
+}
+
+// 2. Призначення через властивість
+mainTitle.onclick = () => alert("Клік по заголовку (через властивість)!");
+
+// 3. addEventListener — кілька обробників
+mainTitle.addEventListener("click", () => {
+    alert("⚽ Обробник 1 через addEventListener");
+});
+mainTitle.addEventListener("click", () => {
+    alert("🏆 Обробник 2 через addEventListener");
+});
+
+// 4. Об'єкт як обробник
+const objectHandler = {
+    handleEvent(event) {
+        alert("🎯 Об'єкт-обробник активовано");
+        console.log("Спрацював на:", event.currentTarget);
+    }
+};
+mainTitle.addEventListener("click", objectHandler);
+
+// Видалення обробника
+setTimeout(() => {
+    mainTitle.removeEventListener("click", objectHandler);
+    console.log("⛔ Об'єкт-обробник видалено");
+}, 15000);
+
+// --- Підсвічування елементів списку ---
+// При кліку на команду — підсвічуємо
+const list = document.getElementById("football-list");
+list.onclick = function(event) {
+    const target = event.target;
+    if (target.tagName === "LI") {
+        const items = list.querySelectorAll("li");
+        items.forEach(item => item.style.background = "");
+        target.style.background = "#ffeb3b"; // жовта підсвітка
+    }
+};
+
+// --- Меню з data-* атрибутами ---
+const menu = document.getElementById("menu");
+menu.addEventListener("click", function(event) {
+    const action = event.target.dataset.action;
+    if (!action) return;
+
+    if (action === "showInfo") {
+        alert("🌐 Це портал футбольних фанатів!");
+    } else if (action === "compare") {
+        compareStringsFromUser();
+    } else if (action === "developer") {
+        developerInfo("Рублевський", "Максим", "Футбольний фронтенд-розробник");
+    }
+});
