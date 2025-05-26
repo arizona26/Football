@@ -194,3 +194,78 @@ li.active {
     background-color: #f0fff0;
     color: darkgreen;
 }
+.hover-box {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    width: 150px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.hover-box.hovered {
+    background-color: yellow;
+    transform: scale(1.05);
+}
+
+#drag-box {
+    width: 120px;
+    height: 120px;
+    background-color: red;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 300px;
+    left: 50px;
+    cursor: grab;
+    user-select: none;
+}
+.status-bar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.status-column {
+  width: 200px;
+  min-height: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.status-column h2 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.to-play {
+  background-color: #e53935;
+}
+
+.playing {
+  background-color: #ffa000;
+}
+
+.finished {
+  background-color: #43a047;
+}
+.match {
+  background-color: white;
+  color: #333;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  cursor: grab;
+  transition: background-color 0.3s;
+  user-select: none;
+}
+
+.match:hover {
+  background-color: #ddd;
+}
+.highlight {
+  background-color: yellow; /* або будь-який інший стиль */
+}

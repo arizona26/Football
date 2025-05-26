@@ -114,134 +114,217 @@
 // startBlock.after(afterBlock);
 
 // Обробник події через атрибут
-function handleMouseOverTitle() {
-    alert("Факт: Найбільше титулів Ліги чемпіонів має 'Реал Мадрид' — 14!");
-}
+//  Функція для обробки події через атрибут
+// function handleMouseOverTitle() {
+//     alert("Факт: Найбільше титулів Ліги чемпіонів має 'Реал Мадрид' — 14!");
+// }
 
-//  Подія через властивість
-document.addEventListener('DOMContentLoaded', function () {
-    const factButton = document.getElementById("fact");
-    if (factButton) {
-        factButton.onclick = function () {
-            alert("Цікавий факт: Перший чемпіонат світу з футболу відбувся у 1930 році в Уругваї.");
-        };
+// //  Подія через властивість
+// document.addEventListener('DOMContentLoaded', function () {
+//     const factButton = document.getElementById("fact");
+//     if (factButton) {
+//         factButton.onclick = function () {
+//             alert("Цікавий факт: Перший чемпіонат світу з футболу відбувся у 1930 році в Уругваї.");
+//         };
+//     }
+// });
+
+// //  Подія через addEventListener з окремими функціями
+// function firstHandler() {
+//     alert("Перший обробник: Хто твій улюблений футбольний клуб?");
+// }
+
+// function secondHandler() {
+//     alert("Другий обробник: Пам'ятай — футбол об'єднує світ!");
+// }
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const btn = document.getElementById("football-btn");
+//     if (btn) {
+//         btn.addEventListener("click", firstHandler);
+//         btn.addEventListener("click", secondHandler);
+//     }
+// });
+
+// //  Подія через addEventListener з об’єктом з handleEvent
+// const eventLogger = {
+//     handleEvent(event) {
+//         const log = document.getElementById("log");
+//         if (log) {
+//             log.textContent = "Обробник-об’єкт спрацював на елементі: " + event.currentTarget.tagName;
+//         }
+//     }
+// };
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const btn = document.getElementById("football-btn");
+//     if (btn) {
+//         btn.addEventListener("click", eventLogger);
+
+//         setTimeout(() => {
+//             btn.removeEventListener("click", eventLogger);
+//             console.log("Обробник події eventLogger видалено");
+//         }, 5000);
+//     }
+// });
+
+// //  Подія з використанням data-* 
+// document.addEventListener('DOMContentLoaded', function () {
+//     const menu = document.getElementById("menu");
+//     const output = document.getElementById("output");
+
+//     const menuActions = {
+//         like() {
+//             output.textContent = "Ви поставили лайк цьому клубу!";
+//         },
+//         share() {
+//             output.textContent = "Посилання скопійовано!";
+//         },
+//         info() {
+//             output.textContent = "Це футбольний портал з найкращими клубами.";
+//         }
+//     };
+
+//     if (menu) {
+//         menu.onclick = function (event) {
+//             const button = event.target;
+//             if (button.tagName === "BUTTON") {
+//                 const action = button.dataset.action;
+//                 if (menuActions[action]) {
+//                     menuActions[action]();
+//                 }
+//             }
+//         };
+//     }
+// });
+
+// //  Делегування подій 
+// document.addEventListener('DOMContentLoaded', function () {
+//     const list = document.getElementById("club-list");
+//     if (list) {
+//         list.onclick = function (event) {
+//             const clickedItem = event.target;
+//             if (clickedItem.tagName === "LI") {
+//                 Array.from(list.children).forEach(li => li.classList.remove("active"));
+//                 clickedItem.classList.add("active");
+//             }
+//         };
+//     }
+// });
+
+// class BehaviorController {
+//     constructor(rootElementId) {
+//         this.root = document.getElementById(rootElementId);
+//         if (this.root) {
+//             this.root.addEventListener("click", this.handleClick.bind(this));
+//         }
+//     }
+
+//     handleClick(event) {
+//         const target = event.target;
+//         const behavior = target.dataset.behavior;
+//         if (!behavior) return;
+
+//         switch (behavior) {
+//             case "showAlert":
+//                 alert("Вітаємо Вас на футбольному сайті ");
+//                 break;
+//             case "highlightCompany":
+//                 const desc = document.getElementById("description");
+//                 if (desc) {
+//                     desc.style.backgroundColor = "#ed5d15";
+//                     desc.style.color = "white";
+//                 }
+//                 break;
+//             default:
+//                 console.warn("Невідома поведінка:", behavior);
+//         }
+//     }
+// }
+
+// // Ініціалізація після завантаження сторінки
+// window.addEventListener("DOMContentLoaded", () => {
+//     new BehaviorController("behavior-menu");
+// });
+document.addEventListener("DOMContentLoaded", function () {
+  let draggedMatch = null;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  const matches = document.querySelectorAll(".match");
+  const columns = document.querySelectorAll(".status-column");
+
+  // === Підсвічування при наведенні миші ===
+  matches.forEach(match => {
+    match.addEventListener("mouseover", (e) => {
+      if (!e.relatedTarget || !e.target.contains(e.relatedTarget)) {
+        e.target.classList.add("highlight");
+      }
+    });
+
+    match.addEventListener("mouseout", (e) => {
+      if (!e.relatedTarget || !e.target.contains(e.relatedTarget)) {
+        e.target.classList.remove("highlight");
+      }
+    });
+  });
+
+  // === Перетягування елементів ===
+  matches.forEach(match => {
+    match.addEventListener("mousedown", (e) => {
+      draggedMatch = match;
+      draggedMatch.style.position = "absolute";
+      draggedMatch.style.zIndex = "1000";
+      draggedMatch.style.cursor = "grabbing";
+
+      offsetX = e.offsetX;
+      offsetY = e.offsetY;
+
+      document.body.appendChild(draggedMatch);
+      moveAt(e.pageX, e.pageY);
+    });
+  });
+
+  function moveAt(pageX, pageY) {
+    if (draggedMatch) {
+      draggedMatch.style.left = (pageX - offsetX) + 'px';
+      draggedMatch.style.top = (pageY - offsetY) + 'px';
     }
-});
+  }
 
-//  Подія через addEventListener з окремими функціями
-function firstHandler() {
-    alert("Перший обробник: Хто твій улюблений футбольний клуб?");
-}
-
-function secondHandler() {
-    alert("Другий обробник: Пам'ятай — футбол об'єднує світ!");
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    const btn = document.getElementById("football-btn");
-    if (btn) {
-        btn.addEventListener("click", firstHandler);
-        btn.addEventListener("click", secondHandler);
+  document.addEventListener("mousemove", (e) => {
+    if (draggedMatch) {
+      moveAt(e.pageX, e.pageY);
     }
-});
+  });
 
-//  Подія через addEventListener з об’єктом з handleEvent
-const eventLogger = {
-    handleEvent(event) {
-        const log = document.getElementById("log");
-        if (log) {
-            log.textContent = "Обробник-об’єкт спрацював на елементі: " + event.currentTarget.tagName;
+  document.addEventListener("mouseup", (e) => {
+    if (draggedMatch) {
+      draggedMatch.style.cursor = "grab";
+
+      let dropped = false;
+
+      columns.forEach(column => {
+        const rect = column.getBoundingClientRect();
+        if (
+          e.clientX > rect.left &&
+          e.clientX < rect.right &&
+          e.clientY > rect.top &&
+          e.clientY < rect.bottom
+        ) {
+          column.appendChild(draggedMatch);
+          draggedMatch.style.position = "static";
+          draggedMatch.style.zIndex = "";
+          dropped = true;
         }
+      });
+
+      if (!dropped) {
+        draggedMatch.style.position = "static";
+        draggedMatch.style.zIndex = "";
+      }
+
+      draggedMatch = null;
     }
-};
-
-document.addEventListener('DOMContentLoaded', function () {
-    const btn = document.getElementById("football-btn");
-    if (btn) {
-        btn.addEventListener("click", eventLogger);
-
-        setTimeout(() => {
-            btn.removeEventListener("click", eventLogger);
-            console.log("Обробник події eventLogger видалено");
-        }, 5000);
-    }
-});
-
-//  Подія з використанням data-* 
-document.addEventListener('DOMContentLoaded', function () {
-    const menu = document.getElementById("menu");
-    const output = document.getElementById("output");
-
-    const menuActions = {
-        like() {
-            output.textContent = "Ви поставили лайк цьому клубу!";
-        },
-        share() {
-            output.textContent = "Посилання скопійовано!";
-        },
-        info() {
-            output.textContent = "Це футбольний портал з найкращими клубами.";
-        }
-    };
-
-    if (menu) {
-        menu.onclick = function (event) {
-            const button = event.target;
-            if (button.tagName === "BUTTON") {
-                const action = button.dataset.action;
-                if (menuActions[action]) {
-                    menuActions[action]();
-                }
-            }
-        };
-    }
-});
-
-//  Делегування подій 
-document.addEventListener('DOMContentLoaded', function () {
-    const list = document.getElementById("club-list");
-    if (list) {
-        list.onclick = function (event) {
-            const clickedItem = event.target;
-            if (clickedItem.tagName === "LI") {
-                Array.from(list.children).forEach(li => li.classList.remove("active"));
-                clickedItem.classList.add("active");
-            }
-        };
-    }
-});
-
-class BehaviorController {
-    constructor(rootElementId) {
-        this.root = document.getElementById(rootElementId);
-        if (this.root) {
-            this.root.addEventListener("click", this.handleClick.bind(this));
-        }
-    }
-
-    handleClick(event) {
-        const target = event.target;
-        const behavior = target.dataset.behavior;
-        if (!behavior) return;
-
-        switch (behavior) {
-            case "showAlert":
-                alert("Вітаємо Вас на футбольному сайті ");
-                break;
-            case "highlightCompany":
-                const desc = document.getElementById("description");
-                if (desc) {
-                    desc.style.backgroundColor = "#ed5d15";
-                    desc.style.color = "white";
-                }
-                break;
-            default:
-                console.warn("Невідома поведінка:", behavior);
-        }
-    }
-}
-
-// Ініціалізація після завантаження сторінки
-window.addEventListener("DOMContentLoaded", () => {
-    new BehaviorController("behavior-menu");
+  });
 });

@@ -9,33 +9,23 @@
 </head>
 <body>
 
-    <h1 id="main-title" onmouseover="handleMouseOverTitle()">Ласкаво просимо на футбольний сайт!</h1>
+  <h1>Турнірні матчі</h1>
 
-    <!-- Кнопка для події через властивість -->
-    <button id="fact">Показати ціквий футбольний факт</button>
+<div class="status-bar">
+  <div class="status-column to-play" data-status="to-play">
+    <h2>ДО МАТЧУ</h2>
+    <div class="match">Динамо Київ vs Барселона</div>
+    <div class="match">Реал Мадри vs Шахтар</div>
+  </div>
+  <div class="status-column playing" data-status="playing">
+    <h2>МАТЧ ТРИВАЄ</h2>
+    <div class="match">Динамо Київ vs Шахтар</div>
+  </div>
+  <div class="status-column finished" data-status="finished">
+    <h2>МАТЧ ЗАВЕРШЕНО</h2>
+  </div>
+</div>
 
-    <!-- Кнопка для обробки події -->
-    <button id="football-btn">Для любителей футболу</button>
-      <h2>Популярні футбольні клуби</h2>
-    <!-- Список клубів -->
-    <ul id="club-list">
-        <li>Реал Мадрид</li>
-        <li>Барселона</li>
-        <li>Манчестер Юнайтед</li>
-    </ul>
-
-    <!-- Меню з кнопками -->
-    <div id="menu">
-        <button data-action="like">Like</button>
-        <button data-action="share">Share</button>
-        <button data-action="info">Info</button>
-    </div>
-
-    <div id="output"></div>
-
-    <!-- Лог для запису -->
-    <div id="log"></div>
-  
     <nav>
         <a href="about.html">Про нас</a>
         <a href="teams.html">Команди</a>
