@@ -250,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let draggedMatch = null;
   let offsetX = 0;
   let offsetY = 0;
+  let originalParent = null;
 
   const matches = document.querySelectorAll(".match");
   const columns = document.querySelectorAll(".status-column");
@@ -273,6 +274,8 @@ document.addEventListener("DOMContentLoaded", function () {
   matches.forEach(match => {
     match.addEventListener("mousedown", (e) => {
       draggedMatch = match;
+      originalParent = match.parentElement;
+
       draggedMatch.style.position = "absolute";
       draggedMatch.style.zIndex = "1000";
       draggedMatch.style.cursor = "grabbing";
@@ -315,16 +318,22 @@ document.addEventListener("DOMContentLoaded", function () {
           column.appendChild(draggedMatch);
           draggedMatch.style.position = "static";
           draggedMatch.style.zIndex = "";
+          draggedMatch.style.left = "";
+          draggedMatch.style.top = "";
           dropped = true;
         }
       });
 
-      if (!dropped) {
+      if (!dropped && originalParent) {
+        originalParent.appendChild(draggedMatch);
         draggedMatch.style.position = "static";
         draggedMatch.style.zIndex = "";
+        draggedMatch.style.left = "";
+        draggedMatch.style.top = "";
       }
 
       draggedMatch = null;
+      originalParent = null;
     }
   });
 });
